@@ -3,20 +3,29 @@
 import sys
 import random
 
-number=random.randint(1,10)
+if len(sys.argv)!=3:
+	print("USAGE: python guess.py num_tries MAX")
+	sys.exit(0)
+
+num_tries = int(sys.argv[1])
+MAX = int(sys.argv[2])
+#compute picks a number
+number=random.randint(1,MAX-1)
 done=0
 tries=0
-while(done==0 and tries<5):
-	guess=int(raw_input("Guess a number between 1 and 10: "))
+while(done==0 and tries<num_tries):
+	guess=int(raw_input("Guess a number between 1 and %d: "%MAX))
 	if guess==number:
 		done=1
 	if guess<number:
-		print(str(guess)+" is too small, try a higher number")
+		print("WRONG: "+ str(guess)+" is too SMALL, try a higher number")
 	if guess>number:
-		print(str(guess)+" is too large, try a smaller number")
+		print("WRONG: "+ str(guess)+" is too BIG, try a smaller number")
 	tries+=1
 if done==1:
-	print("YOU WIN")
+	s="YOU WIN "
+	print(s*100000)
+
 else:
-	print("YOU LOSE")
+	print("YOU LOSE "*100000)
 

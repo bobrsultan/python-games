@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-
+import sys
 import random
-
+player =raw_input("Give Player Symbol: ")
+comp="C"
 def printboard(board):
 	print(str(board[0])+" | "+str(board[1])+" | "+str(board[2]))
 	print("----------")	
@@ -12,7 +13,7 @@ def printboard(board):
 def playrandom(board):
 	missing=[x for x in range(9) if board[x]==0]
 	move=random.randint(0,len(missing)-1)
-	board[missing[move]]=2
+	board[missing[move]]=comp
 	return None
 
 def getmove(board):
@@ -25,28 +26,28 @@ def getmove(board):
 			move=int(x)
 			if board[move]==0:
 				done=1
-				board[move]=1	
+				board[move]=player
 		except:	
 			print("invalid move")
 	return None
 
 def winner(board):
-	if board[:3]==[1,1,1] or board[3:6]==[1,1,1] or board[6:]==[1,1,1]:
-		print("YOU WIN!!!!!")
+	if board[:3]==[player,player,player] or board[3:6]==[player,player,player] or board[6:]==[player,player,player]:
+		print("YOU WIN!!!!!"*10000)
 		return 1
-	if board[:3]==[2,2,2] or board[3:6]==[2,2,2] or board[6:]==[2,2,2]:
+	if board[:3]==[comp,comp,comp] or board[3:6]==[comp,comp,comp] or board[6:]==[comp,comp,comp]:
 		print("YOU Lose, sorry")
 		return 2
-	if board[::3]==[1,1,1] or board[1::3]==[1,1,1] or board[2::3]==[1,1,1]:
-		print("YOU WIN!!!!!")
+	if board[::3]==[player,player,player] or board[1::3]==[player,player,player] or board[2::3]==[player,player,player]:
+		print("YOU WIN!!!!!"*10000)
 		return 1
-	if board[::3]==[2,2,2] or board[1::3]==[2,2,2] or board[2::3]==[2,2,2]:
+	if board[::3]==[comp,comp,comp] or board[1::3]==[comp,comp,comp] or board[2::3]==[comp,comp,comp]:
 		print("YOU Lose, sorry")
 		return 2
-	if [board[0],board[4],board[8]]==[1,1,1] or [board[2],board[4],board[6]]==[1,1,1]:
-		print("YOU WIN!!!!!")
+	if [board[0],board[4],board[8]]==[player,player,player] or [board[2],board[4],board[6]]==[player,player,player]:
+		print("YOU WIN!!!!!"*10000)
 		return 1
-	if [board[0],board[4],board[8]]==[2,2,2] or [board[2],board[4],board[6]]==[2,2,2]:
+	if [board[0],board[4],board[8]]==[comp,comp,comp] or [board[2],board[4],board[6]]==[comp,comp,comp]:
 		print("YOU Lose, sorry")
 		return 2
 	missing=[x for x in range(9) if board[x]==0]
