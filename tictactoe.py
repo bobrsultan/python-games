@@ -12,8 +12,11 @@ def printboard(board):
 
 def playrandom(board):
 	missing=[x for x in range(9) if board[x]==0]
-	move=random.randint(0,len(missing)-1)
-	board[missing[move]]=comp
+	if 4 in missing:
+		board[4]=comp
+	else:		
+		move=random.randint(0,len(missing)-1)
+		board[missing[move]]=comp
 	return None
 
 def getmove(board):

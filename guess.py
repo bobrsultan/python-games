@@ -10,17 +10,29 @@ if len(sys.argv)!=3:
 num_tries = int(sys.argv[1])
 MAX = int(sys.argv[2])
 #compute picks a number
-number=random.randint(1,MAX-1)
-done=0
+number=random.randint(1,MAX)
+done=False
 tries=0
-while(done==0 and tries<num_tries):
-	guess=int(raw_input("Guess a number between 1 and %d: "%MAX))
+under=1
+over=MAX
+while(not done and tries<num_tries):
+	guessed=False
+	guess=0
+	while not guessed:
+		try: 
+			guess=int(raw_input("Please guess a number between %d and %d: "%(under,over)))
+			guessed=True
+		except:
+			print("Please type a number!")
+			pass
 	if guess==number:
 		done=1
 	if guess<number:
 		print("WRONG: "+ str(guess)+" is too SMALL, try a higher number")
+		under=max(under,guess)
 	if guess>number:
 		print("WRONG: "+ str(guess)+" is too BIG, try a smaller number")
+		over=min(over,guess)
 	tries+=1
 if done==1:
 	s="YOU WIN "

@@ -23,7 +23,7 @@ def buildPdict():
 	pdic={}
 	for number in ["A","2","3","4","5","6","7","8","9","10","J","Q","K"]:
 		for suit in ["_H","_D","_S","_C"]:
-			pdic[number+suit]="WarCardGame/%s%s.gif"%(suit[-1].lower(),number)
+			pdic[number+suit]="images/%s%s.gif"%(suit[-1].lower(),number)
 	return pdic
 
 class Game:
@@ -41,8 +41,8 @@ class Game:
 		self.svBP.set("0%")
 		self.bpentry=Entry(self.root,textvariable=self.svBP)
 		self.bpentry.grid(row=3,column=1)
-		self.blank=PhotoImage(file="b.gif")
-		self.question=PhotoImage(file="ec.gif")
+		self.blank=PhotoImage(file="images/b.gif")
+		self.question=PhotoImage(file="images/ec.gif")
 		self.deck=buildDeck()
 		self.playerHand=[]
 		self.playerPoints=0
@@ -154,42 +154,42 @@ class Game:
 
 	def checkWinner(self):
 		if self.playerPoints>21 and self.computerPoints>21:	
-			print("TIE")
+			print("TIE\n")
 			self.playerWonCards.extend(self.playerHand)
 			self.computerWonCards.extend(self.computerHand)
 			self.svCCW.set("%d"%len(self.computerWonCards))	
 			self.svPCW.set("%d"%len(self.playerWonCards))	
 			return
 		elif self.playerPoints>21:
-			print("Computer Wins")
+			print("Computer Wins\n")
 			self.computerWonCards.extend(self.playerHand)
 			self.computerWonCards.extend(self.computerHand)
 			self.svCCW.set("%d"%len(self.computerWonCards))	
 			self.svPCW.set("%d"%len(self.playerWonCards))	
 			return
 		elif self.computerPoints>21:
-			print("%s Wins"%self.name)
+			print("%s Wins\n"%self.name)
 			self.playerWonCards.extend(self.playerHand)
 			self.playerWonCards.extend(self.computerHand)
 			self.svCCW.set("%d"%len(self.computerWonCards))	
 			self.svPCW.set("%d"%len(self.playerWonCards))	
 			return
 		elif self.playerPoints>self.computerPoints:	
-			print("%s Wins"%self.name)
+			print("%s Wins\n"%self.name)
 			self.playerWonCards.extend(self.playerHand)
 			self.playerWonCards.extend(self.computerHand)
 			self.svCCW.set("%d"%len(self.computerWonCards))	
 			self.svPCW.set("%d"%len(self.playerWonCards))	
 			return
 		elif self.playerPoints<self.computerPoints:	
-			print("Computer Wins")
+			print("Computer Wins\n")
 			self.computerWonCards.extend(self.playerHand)
 			self.computerWonCards.extend(self.computerHand)
 			self.svCCW.set("%d"%len(self.computerWonCards))	
 			self.svPCW.set("%d"%len(self.playerWonCards))	
 			return
 		else:
-			print("TIE")
+			print("TIE\n")
 			self.playerWonCards.extend(self.playerHand)
 			self.computerWonCards.extend(self.computerHand)
 			self.svCCW.set("%d"%len(self.computerWonCards))	
