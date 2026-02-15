@@ -20,7 +20,7 @@ while(not done and tries<num_tries):
 	guess=0
 	while not guessed:
 		try: 
-			guess=int(raw_input("Please guess a number between %d and %d: "%(under,over)))
+			guess=int(input("Please guess a number between %d and %d: "%(under,over)))
 			guessed=True
 		except:
 			print("Please type a number!")
